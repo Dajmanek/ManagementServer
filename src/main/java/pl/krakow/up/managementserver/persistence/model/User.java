@@ -10,11 +10,17 @@ public class User {
 
     @Id
     @GeneratedValue
+    @Column(name = "id", nullable = false)
     private Long id;
 
+    @Column(name = "login", nullable = false, unique = true)
     private String login;
 
+    @Column(name = "password", nullable = false)
     private String password;
+
+    public User() {
+    }
 
     public Long getId() {
         return this.id;
@@ -54,7 +60,6 @@ public class User {
         return "User{" +
                 "id=" + this.id +
                 ", login='" + this.login + '\'' +
-                ", password='" + this.password + '\'' +
                 '}';
     }
 }

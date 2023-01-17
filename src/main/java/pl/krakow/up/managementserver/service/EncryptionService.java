@@ -4,7 +4,6 @@ import org.springframework.stereotype.Service;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Base64;
 
 @Service
 public class EncryptionService {
@@ -17,8 +16,13 @@ public class EncryptionService {
 
     public String encrypt(final String text) {
         final byte[] encryptedMessage = this.messageDigest.digest(text.getBytes());
-        final byte[] encodedEncryption = Base64.getEncoder().encode(encryptedMessage);
-        return new String(encodedEncryption);
+        final StringBuilder hexString = new StringBuilder();
+        for (byte b : encryptedMessage) {
+            final String hex = Integer.toHexString(0xff & b);
+            if (hex.length() == 1) hexString.append('0');
+            hexString.append(hex);
+        }
+        return hexString.toString();
     }
 
     public boolean compare(final String text, final String hash) {

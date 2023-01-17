@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- NOTE The only purpose of that configuration is being able to control the log level used by the bundled jetty of the GWT code server. -->
+
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener"/>
+
+    <conversionRule conversionWord="crlf" converterClass="org.owasp.security.logging.mask.CRLFConverter"/>
+    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
+    <conversionRule conversionWord="wex"
+                    converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %clr(%d{HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%t]){faint} %clr(%logger{50}){cyan} %clr(:){faint} %clr(%X{trace.id}){blue} %clr(:){faint} %crlf(%m){}%n${LOG_EXCEPTION_CONVERSION_WORD:-%wex}
+            </Pattern>
+        </layout>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>logs/latest.log</file>
+        <append>true</append>
+        <immediateFlush>true</immediateFlush>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %d{HH:mm:ss.SSS} %5p ${PID:- } --- [%t] %logger{50} : %X{trace.id} : %crlf(%m){}%n${LOG_EXCEPTION_CONVERSION_WORD:-%wex}
+            </Pattern>
+        </layout>
+    </appender>
+
+    <root level="INFO">
+         <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
+    </root>
+</configuration>
