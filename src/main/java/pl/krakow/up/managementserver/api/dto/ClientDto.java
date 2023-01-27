@@ -8,74 +8,135 @@ public class ClientDto {
 
     private String lastName;
 
-    private String address;
+    private String postCode;
+
+    private String city;
+
+    private String street;
+
+    private Integer buildingNumber;
+
+    private Integer flatNumber;
+
+    private String phoneNumber;
 
     private String password;
+
+    private Long lastUpdate;
 
     private Boolean full;
 
     public ClientDto() {
     }
 
-    public ClientDto(final Long id,
-                     final String firstName,
-                     final String lastName,
-                     final String address,
-                     final String password,
-                     final Boolean full) {
+    public ClientDto(Long id, String firstName, String lastName, String postCode, String city, String street, Integer buildingNumber, Integer flatNumber, String phoneNumber, String password, Long lastUpdate, Boolean full) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.address = address;
+        this.postCode = postCode;
+        this.city = city;
+        this.street = street;
+        this.buildingNumber = buildingNumber;
+        this.flatNumber = flatNumber;
+        this.phoneNumber = phoneNumber;
         this.password = password;
+        this.lastUpdate = lastUpdate;
         this.full = full;
     }
 
     public Long getId() {
-        return this.id;
+        return id;
     }
 
-    public void setId(final Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
     public String getFirstName() {
-        return this.firstName;
+        return firstName;
     }
 
-    public void setFirstName(final String firstName) {
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
     public String getLastName() {
-        return this.lastName;
+        return lastName;
     }
 
-    public void setLastName(final String lastName) {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    public String getAddress() {
-        return this.address;
+    public String getPostCode() {
+        return postCode;
     }
 
-    public void setAddress(final String address) {
-        this.address = address;
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public Integer getBuildingNumber() {
+        return buildingNumber;
+    }
+
+    public void setBuildingNumber(Integer buildingNumber) {
+        this.buildingNumber = buildingNumber;
+    }
+
+    public Integer getFlatNumber() {
+        return flatNumber;
+    }
+
+    public void setFlatNumber(Integer flatNumber) {
+        this.flatNumber = flatNumber;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getPassword() {
-        return this.password;
+        return password;
     }
 
-    public void setPassword(final String password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 
-    public Boolean getFull() {
-        return this.full;
+    public Long getLastUpdate() {
+        return lastUpdate;
     }
 
-    public void setFull(final Boolean full) {
+    public void setLastUpdate(Long lastUpdate) {
+        this.lastUpdate = lastUpdate;
+    }
+
+    public Boolean getFull() {
+        return full;
+    }
+
+    public void setFull(Boolean full) {
         this.full = full;
     }
 }

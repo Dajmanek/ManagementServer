@@ -9,8 +9,8 @@ import java.util.Objects;
 public class Client {
 
     @Id
+    @GeneratedValue
     @Column(name = "id", nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "firstname")
@@ -19,11 +19,29 @@ public class Client {
     @Column(name = "lastname")
     private String lastName;
 
-    @Column(name = "address")
-    private String address;
+    @Column(name = "post_code")
+    private String postCode;
+
+    @Column(name = "city")
+    private String city;
+
+    @Column(name = "street")
+    private String street;
+
+    @Column(name = "building_number")
+    private Integer buildingNumber;
+
+    @Column(name = "flat_number")
+    private Integer flatNumber;
+
+    @Column(name = "phone_number")
+    private String phoneNumber;
 
     @Column(name = "password", nullable = false)
     private String password;
+
+    @Column(name = "last_update")
+    private Long lastUpdate;
 
     @Column(name = "full", nullable = false, columnDefinition = "boolean default false")
     private Boolean full;
@@ -51,12 +69,52 @@ public class Client {
         this.lastName = lastName;
     }
 
-    public String getAddress() {
-        return address;
+    public String getPostCode() {
+        return postCode;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public Integer getBuildingNumber() {
+        return buildingNumber;
+    }
+
+    public void setBuildingNumber(Integer buildingNumber) {
+        this.buildingNumber = buildingNumber;
+    }
+
+    public Integer getFlatNumber() {
+        return flatNumber;
+    }
+
+    public void setFlatNumber(Integer flatNumber) {
+        this.flatNumber = flatNumber;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getPassword() {
@@ -65,6 +123,14 @@ public class Client {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Long getLastUpdate() {
+        return lastUpdate;
+    }
+
+    public void setLastUpdate(Long lastUpdate) {
+        this.lastUpdate = lastUpdate;
     }
 
     public Boolean getFull() {
@@ -80,23 +146,29 @@ public class Client {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Client client = (Client) o;
-        return Objects.equals(id, client.id) && Objects.equals(firstName, client.firstName) && Objects.equals(lastName, client.lastName) && Objects.equals(address, client.address) && Objects.equals(password, client.password) && Objects.equals(full, client.full);
+        return buildingNumber == client.buildingNumber && flatNumber == client.flatNumber && Objects.equals(id, client.id) && Objects.equals(firstName, client.firstName) && Objects.equals(lastName, client.lastName) && Objects.equals(postCode, client.postCode) && Objects.equals(city, client.city) && Objects.equals(street, client.street) && Objects.equals(phoneNumber, client.phoneNumber) && Objects.equals(password, client.password) && Objects.equals(lastUpdate, client.lastUpdate) && Objects.equals(full, client.full);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, address, password, full);
+        return Objects.hash(id, firstName, lastName, postCode, city, street, buildingNumber, flatNumber, phoneNumber, password, lastUpdate, full);
     }
 
     @Override
     public String toString() {
         return "Client{" +
-                "id=" + this.id +
-                ", firstName='" + this.firstName + '\'' +
-                ", lastName='" + this.lastName + '\'' +
-                ", address='" + this.address + '\'' +
-                ", password='" + this.password + '\'' +
-                ", full=" + this.full +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", postCode='" + postCode + '\'' +
+                ", city='" + city + '\'' +
+                ", street='" + street + '\'' +
+                ", buildingNumber=" + buildingNumber +
+                ", flatNumber=" + flatNumber +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", password='" + password + '\'' +
+                ", lastUpdate=" + lastUpdate +
+                ", full=" + full +
                 '}';
     }
 }
